@@ -6,7 +6,7 @@ RUN apt-get clean \
   && apt-get -y upgrade \
   && apt-get install -y ca-certificates wget curl
   
-RUN echo "deb http://ubuntu.kurento.org xenial-dev kms6" | tee /etc/apt/sources.list.d/kurento-dev.list \
+RUN echo "deb http://ubuntu.kurento.org xenial kms6" | tee /etc/apt/sources.list.d/kurento.list \
     && wget -O - http://ubuntu.kurento.org/kurento.gpg.key | apt-key add - \
     && apt-get update \
     && apt-get install -y kurento-media-server-6.0 \
