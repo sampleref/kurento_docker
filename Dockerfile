@@ -4,12 +4,11 @@ RUN apt-get clean \
   && rm -rf /var/lib/apt/lists/* \ 
   && apt-get update \
   && apt-get -y upgrade \
-  && apt-get install -y ca-certificates wget curl
-  
-RUN tee "/etc/apt/sources.list.d/kurento.list" >/dev/null <<EOF \
-    && add-apt-repository "deb http://ubuntu.openvidu.io/6.7.0 xenial kms6" \
-    && add-apt-repository "deb http://ubuntu.openvidu.io/externals xenial kms6-externals" \
-    && EOF \
+  && apt-get install -y ca-certificates wget curl software-properties-common
+
+RUN tee "/etc/apt/sources.list.d/kurento.list" > /dev/null \
+	&& add-apt-repository "deb http://ubuntu.openvidu.io/6.7.0 xenial kms6" \
+	&& add-apt-repository "deb http://ubuntu.openvidu.io/externals xenial kms6-externals" \
     && apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 5AFA7A83 \
     && apt-get update \
     && apt-get install -y kurento-media-server \
