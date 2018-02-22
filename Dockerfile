@@ -23,6 +23,6 @@ RUN chmod 777 /healthchecker.sh
 
 HEALTHCHECK --interval=5m --timeout=3s --retries=1 CMD /healthchecker.sh
 
-ENV GST_DEBUG=3,Kurento*:5,kms*:5,rtpendpoint:4,webrtcendpoint:4,KurentoRecorderEndpointImpl:4,recorderendpoint:5,qtmux:5
+ENV GST_DEBUG=3,Kurento*:5,kms*:5,webrtcendpoint:4,KurentoRecorderEndpointImpl:4,recorderendpoint:5,qtmux:4,rtspsrc*:5,playerendpoint:5,appsrc:7,agnosticbin*:7,kmselement:7,*CAPS*:1
 
 ENTRYPOINT ["/entrypoint.sh"]

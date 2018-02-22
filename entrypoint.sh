@@ -15,5 +15,6 @@ fi
 cat /etc/hosts | sed '/::1/d' | tee /etc/hosts > /dev/null
 echo '/var/log/kurento-media-server/core_%e_%p_%u_%t' | tee /proc/sys/kernel/core_pattern >/dev/null
 
-exec /usr/bin/kurento-media-server -d /var/log/kurento-media-server
-#exec service kurento-media-server start
+#exec /usr/bin/kurento-media-server -d /var/log/kurento-media-server
+service kurento-media-server start
+exec "$@";

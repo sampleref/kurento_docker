@@ -1,4 +1,5 @@
 # kurento_docker
+# copy SdpEndpoint.json to path /etc/kurento/modules/kurento/SdpEndpoint.json to disable vp8 in kms
 Docker for Kurento Media Server
 
 docker build -t nas2docker/kurento_dev --build-arg http_proxy=$http_proxy --build-arg https_proxy=$https_proxy .
