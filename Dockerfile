@@ -7,7 +7,7 @@ RUN apt-get clean \
   && apt-get install -y bzip2 ca-certificates wget curl software-properties-common
 
 RUN tee "/etc/apt/sources.list.d/kurento.list" > /dev/null \
-	&& add-apt-repository "deb http://ubuntu.openvidu.io/6.7.1 xenial kms6" \
+	&& add-apt-repository "deb [arch=amd64] http://ubuntu.openvidu.io/dev xenial kms6" \
     && apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 5AFA7A83 \
     && apt-get update \
     && apt-get --allow-unauthenticated install -y kurento-media-server=6.7.3.xenial~20180622121827.4.e7e0a73 \
