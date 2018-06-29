@@ -10,7 +10,9 @@ RUN tee "/etc/apt/sources.list.d/kurento.list" > /dev/null \
 	&& add-apt-repository "deb http://ubuntu.openvidu.io/6.7.1 xenial kms6" \
     && apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 5AFA7A83 \
     && apt-get update \
-    && apt-get --allow-unauthenticated install -y kurento-media-server openh264-gst-plugins-bad-1.5 \
+    && apt-get --allow-unauthenticated install -y kurento-media-server=6.7.3.xenial~20180622121827.4.e7e0a73 \
+                           kms-core=6.7.3.xenial~20180622115635.19.35c4865 \
+                           kms-elements=6.7.3.xenial~20180622120450.16.10e6f62 openh264-gst-plugins-bad-1.5 \
 	&& apt-get clean \
 	&& rm -rf /var/lib/apt/lists/*
 
@@ -18,6 +20,8 @@ EXPOSE 8888
 
 COPY ./entrypoint.sh /entrypoint.sh
 COPY ./healthchecker.sh /healthchecker.sh
+COPY ./MediaElement.conf.ini /etc/kurento/modules/kurento/MediaElement.conf.ini
+COPY ./SdpEndpoint.conf.json /etc/kurento/modules/kurento/SdpEndpoint.conf.json
 
 RUN chmod 777 /entrypoint.sh
 RUN chmod 777 /healthchecker.sh
